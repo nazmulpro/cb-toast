@@ -9,6 +9,52 @@
     <script nomodule src="/build/cb-toast.js"></script>
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <cb-toast></cb-toast>
+    <button id="showToastSuccess" class="bg-green-700">success</button>
+    <button id="showToastInfo" class="bg-blue-700">info</button>
+    <button id="showToastWearing" class="bg-yellow-700">yellow</button>
+    <button id="showToastDanger" class="bg-red-700">red</button>
+    <script>
+      let cbToast = document.querySelector('cb-toast');
+
+      document.getElementById('showToastSuccess').addEventListener('click', event => {
+        cbToast.Toast({
+          title: 'Success',
+          description: 'success message',
+          timeOut: 3000,
+          position: 'top',
+          type: 'success',
+        });
+      });
+
+      document.getElementById('showToastInfo').addEventListener('click', event => {
+        cbToast.Toast({
+          title: 'Info',
+          description: 'information message',
+          timeOut: 3000,
+          position: 'top-right',
+          type: 'info',
+        });
+      });
+
+      document.getElementById('showToastWearing').addEventListener('click', event => {
+        cbToast.Toast({
+          title: 'Wearing',
+          description: 'wearing message',
+          timeOut: 3000,
+          position: 'top-right',
+          type: 'warning',
+        });
+      });
+      document.getElementById('showToastDanger').addEventListener('click', event => {
+        cbToast.Toast({
+          title: 'Error',
+          description: 'error message',
+          timeOut: 5000,
+          position: 'top-right',
+          type: 'error',
+        });
+      });
+    </script>
   </body>
 </html>
