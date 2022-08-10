@@ -8,8 +8,8 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
   defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
 });
 
-process.env.NODE_ENV = 'development';
-//process.env.NODE_ENV = 'production';
+//process.env.NODE_ENV = 'development';
+process.env.NODE_ENV = 'production';
 
 export const config: Config = {
   namespace: 'cb-toast',
@@ -22,7 +22,7 @@ export const config: Config = {
         require('postcss-import'),
         require('tailwindcss')('./tailwind.config.js'),
         autoprefixer(),
-        ...(process.env.NODE_ENV === 'development' ? [purgecss, require('cssnano')] : []),
+        ...(process.env.NODE_ENV === 'production' ? [purgecss, require('cssnano')] : []),
       ],
     }),
   ],
