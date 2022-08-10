@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .top {
+    @apply inset-x-0 top-2 mx-auto;
+  }
+  .top-left {
+    @apply top-2 left-2;
+  }
+  .top-right {
+    @apply top-2 right-2;
+  }
+  .bottom-left {
+    @apply bottom-2 left-2;
+  }
+  .bottom-right {
+    @apply bottom-2 right-2;
+  }
+  .bottom {
+    @apply inset-x-0 bottom-2 mx-auto;
+  }
+
+  .successBgColor {
+    @apply bg-emerald-500;
+  }
+  .infoBgColor {
+    @apply bg-blue-500;
+  }
+  .warningBgColor {
+    @apply bg-yellow-500;
+  }
+  .errorBgColor {
+    @apply bg-red-500;
+  }
+
+  .successTextColor {
+    @apply text-emerald-500;
+  }
+  .infoTextColor {
+    @apply text-blue-500;
+  }
+  .warningTextColor {
+    @apply text-yellow-500;
+  }
+  .errorTextColor {
+    @apply text-red-500;
+  }
+}

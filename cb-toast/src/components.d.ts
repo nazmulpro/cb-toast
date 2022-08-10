@@ -6,56 +6,47 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface CbToast {
+        "Toast": (toast: any) => Promise<void>;
+    }
+    interface CbToastcontent {
+        "setParams": (toast: any) => Promise<void>;
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLCbToastElement extends Components.CbToast, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLCbToastElement: {
+        prototype: HTMLCbToastElement;
+        new (): HTMLCbToastElement;
+    };
+    interface HTMLCbToastcontentElement extends Components.CbToastcontent, HTMLStencilElement {
+    }
+    var HTMLCbToastcontentElement: {
+        prototype: HTMLCbToastcontentElement;
+        new (): HTMLCbToastcontentElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "cb-toast": HTMLCbToastElement;
+        "cb-toastcontent": HTMLCbToastcontentElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface CbToast {
+    }
+    interface CbToastcontent {
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "cb-toast": CbToast;
+        "cb-toastcontent": CbToastcontent;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "cb-toast": LocalJSX.CbToast & JSXBase.HTMLAttributes<HTMLCbToastElement>;
+            "cb-toastcontent": LocalJSX.CbToastcontent & JSXBase.HTMLAttributes<HTMLCbToastcontentElement>;
         }
     }
 }
