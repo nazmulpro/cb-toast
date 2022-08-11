@@ -20,7 +20,7 @@ npm install cb-toast
 Or use npm cdn
 
 ```js
-<script type="module" src="https://cdn.jsdelivr.net/npm/cb-toast@1.0.0/dist/cb-toast/cb-toast.esm.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/cb-toast@1.0.2/dist/cb-toast/cb-toast.esm.js"></script>
 ```
 
 ## Usage
