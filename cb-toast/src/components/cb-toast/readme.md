@@ -7,7 +7,7 @@
 
 ## Methods
 
-### `Toast(toast: any) => Promise<void>`
+### `Toast(toast: IToastOptions) => Promise<void>`
 
 
 

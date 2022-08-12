@@ -5,17 +5,16 @@
 <!-- Auto Generated Below -->
 
 
-## Methods
+## Properties
 
-### `setParams(toast: any) => Promise<void>`
-
-
-
-#### Returns
-
-Type: `Promise<void>`
-
-
+| Property        | Attribute         | Description | Type     | Default             |
+| --------------- | ----------------- | ----------- | -------- | ------------------- |
+| `description`   | `description`     |             | `string` | `'success message'` |
+| `toastTitle`    | `toast-title`     |             | `string` | `'Success'`         |
+| `type`          | `type`            |             | `string` | `'success'`         |
+| `typeBgColor`   | `type-bg-color`   |             | `string` | `undefined`         |
+| `typeIcon`      | `type-icon`       |             | `any`    | `undefined`         |
+| `typeTextColor` | `type-text-color` |             | `string` | `undefined`         |
 
 
 ## Dependencies

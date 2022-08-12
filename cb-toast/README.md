@@ -20,7 +20,7 @@ npm install cb-toast
 Or use npm cdn
 
 ```js
-<script type="module" src="https://cdn.jsdelivr.net/npm/cb-toast@1.0.2/dist/cb-toast/cb-toast.esm.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/cb-toast@1.0.3/dist/cb-toast/cb-toast.esm.js"></script>
 ```
 
 ## Usage
@@ -44,7 +44,7 @@ document.getElementById('showToastSuccess').addEventListener('click', event => {
           title: 'Success', //default
           description: 'success message', //default
           timeOut: 3000, //default
-          position: 'top-left', //default
+          position: 'top-right', //default
           type: 'success', //default
         });
 
@@ -55,12 +55,20 @@ document.getElementById('showToastSuccess').addEventListener('click', event => {
 
 ## Positions
 
-```html
-'top' 'bottom' 'top-left' 'top-right' 'top-right' 'top-right'
+```js
+'top';
+'bottom';
+'top-left';
+'top-right'; //default
+'bottom-left';
+'bottom-right';
 ```
 
 ## type
 
-```html
-'success' 'info' 'warning' 'error' 'top-right'
+```js
+'success'; //default
+'info';
+'warning';
+'error';
 ```
