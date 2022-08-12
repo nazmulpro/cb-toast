@@ -1,4 +1,4 @@
-import { Component, Host, h, State, Method } from '@stencil/core';
+import { Component, Host, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'cb-toastcontent',
@@ -7,73 +7,13 @@ import { Component, Host, h, State, Method } from '@stencil/core';
 })
 export class CbToastcontent {
   el: HTMLElement;
-  @State() title: string = 'Success';
-  @State() description: string = 'success message';
-  @State() type: string = 'success';
+  @Prop() toastTitle: string = 'Success';
+  @Prop() description: string = 'success message';
+  @Prop() type: string = 'success';
 
-  @State() toastType: Array<object> = [
-    {
-      type: 'success',
-      typeBgColor: 'successBgColor',
-      typeTextColor: 'successTextColor',
-      typeIcon: () => (
-        <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z" />
-      ),
-    },
-    {
-      type: 'info',
-      typeBgColor: 'infoBgColor',
-      typeTextColor: 'infoTextColor',
-      typeIcon: () => (
-        <path
-          clip-rule="evenodd"
-          fill-rule="evenodd"
-          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-        />
-      ),
-    },
-    {
-      type: 'warning',
-      typeBgColor: 'warningBgColor',
-      typeTextColor: 'warningTextColor',
-      typeIcon: () => (
-        <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z" />
-      ),
-    },
-    {
-      type: 'error',
-      typeBgColor: 'errorBgColor',
-      typeTextColor: 'errorTextColor',
-      typeIcon: () => (
-        <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z" />
-      ),
-    },
-  ];
-
-  @State() typeBgColor: string = this.toastType[0]['typeBgColor'];
-  @State() typeTextColor: string = this.toastType[0]['typeTextColor'];
-  @State() typeIcon: any = this.toastType[0]['typeIcon']();
-
-  @Method() async setParams(toast) {
-    if (toast.title !== undefined && toast.title !== '') {
-      this.title = toast['title'];
-    }
-    if (toast.description !== undefined && toast.description !== '') {
-      this.description = toast['description'];
-    }
-
-    if (toast.type !== undefined && toast.type !== '') {
-      this.type = toast['type'];
-      for (var i = 0; i < this.toastType.length; i++) {
-        if (this.type === this.toastType[i]['type']) {
-          this.typeBgColor = this.toastType[i]['typeBgColor'];
-          this.typeTextColor = this.toastType[i]['typeTextColor'];
-          this.typeIcon = this.toastType[i]['typeIcon']();
-          break;
-        }
-      }
-    }
-  }
+  @Prop() typeBgColor: string;
+  @Prop() typeTextColor: string;
+  @Prop() typeIcon: any;
 
   closeToast = event => {
     event.target.parentNode.closest('cb-toastcontent').remove();
@@ -87,7 +27,8 @@ export class CbToastcontent {
     ></path>
   );
 
-  private buildToast = () => {
+  buildToast = () => {
+    console.log('Toast load build');
     let svgIcon = (
       <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
         {this.typeIcon}
@@ -114,7 +55,7 @@ export class CbToastcontent {
 
         <div class="flex-grow w-72 px-4 py-2 -mx-3">
           <div class="mx-3">
-            <span class={this.typeTextColor + ' font-semibold'}>{this.title}</span>
+            <span class={this.typeTextColor + ' font-semibold'}>{this.toastTitle}</span>
             <p class="text-sm text-gray-600 ">{this.description}</p>
           </div>
         </div>
@@ -126,6 +67,15 @@ export class CbToastcontent {
       </div>
     );
   };
+
+  componentWillLoad() {
+    console.log('will load');
+    console.log(this.toastTitle);
+  }
+
+  componentDidLoad() {
+    console.log('Did load');
+  }
 
   render() {
     return <Host>{this.buildToast()}</Host>;

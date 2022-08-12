@@ -1,6 +1,6 @@
 {
   "name": "cb-toast",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Coolbrains toast notification - web component - Built With Stenciljs",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
