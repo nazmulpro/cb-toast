@@ -2,6 +2,8 @@
 
 Coolbrains Toast Notification web component - Built With Stenciljs
 
+![Toast](https://github.com/nazmulpro/cb-toast/blob/main/toast.png?raw=true "Toast")
+
 This is a toast notification Web Component using Stenciljs.
 
 - Built with Stencil
